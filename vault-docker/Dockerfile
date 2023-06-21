@@ -3,8 +3,8 @@ FROM --platform=$BUILDPLATFORM hashicorp/vault:1.8.0
 ARG TARGETPLATFORM
 ARG TARGETOS
 ARG TARGETARCH
-ARG DOCKER_USERNAME
-ARG DOCKER_PASSWORD
+# ARG DOCKER_USERNAME
+# ARG DOCKER_PASSWORD
 
 
 # Install necessary dependencies
@@ -14,8 +14,8 @@ RUN apk update && apk add --no-cache \
     docker \
     build-base
 
-# Use the build-time variables to authenticate with the registry
-RUN echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+# # Use the build-time variables to authenticate with the registry
+# RUN echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 
 # Clone the V programming language repository
 RUN git clone https://github.com/vlang/v \
